@@ -51,8 +51,16 @@ def delete_request(name: str):
 
 @app.put("/{name}")
 def put_request(name: str, data: Item):
-    names[name] = data.age
-    return {
-        "message": f"{name} updated to age {data.age} successfully! ✅",
-        "names": names
-    }
+    
+    for i in names:
+        if i == name:
+            names.pop(i)
+            
+            names[data.name]=data.age
+            return {
+                "message": f"{name} updated to name {data.name} and age {data.age} successfully! ✅",
+                
+            }
+
+        
+    
